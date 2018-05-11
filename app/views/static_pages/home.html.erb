@@ -1,15 +1,6 @@
 <% provide(:title, "Home") %>
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
-
-  <h2>
-    This is the home page for the
-    <a href="http://www.javiermachin.com/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
-
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://javiermachin.com' %>
+<% if logged_in? %>
+  <%= render 'logged_user' %>
+<% else %>
+  <%= render 'non_logged_user' %>
+<% end %>
