@@ -19,4 +19,13 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
       assert_match micropost.content, response.body
     end
   end
+
+  test "homepage stats" do
+    log_in_as(@user)
+    get root_path
+    assert_template 'shared/_logged_user'
+    assert_select 'div.stats'
+    assert_select 'strong#following'
+    assert_select 'strong#followers'
+  end
 end
